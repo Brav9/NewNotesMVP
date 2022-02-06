@@ -1,15 +1,17 @@
 package com.hfad.newnotesmvp;
 
-public class Presenter implements IContract.IPresenter{
-    public Presenter(IContract.IView myMVPView) {
-        this.myMVPView = myMVPView;
-        this.myMVPModel = new Model();
-    }
+public class Presenter implements IContract.IPresenter {
 
     IContract.IView myMVPView;
-    IContract.IModel myMVPModel;
+
+    public Presenter(IContract.IView myMVPView) {
+        this.myMVPView = myMVPView;
+
+    }
+
+
     @Override
-    public void openNote() {
+    public void clickedOnButton() {
 
     }
 }

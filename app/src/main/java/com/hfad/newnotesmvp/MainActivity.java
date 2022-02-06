@@ -28,9 +28,14 @@ public class MainActivity extends AppCompatActivity implements IContract.IView {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NoteEditorActivity.class);
+//                myMVPPresenter.clickedOnButton();
+                Intent intent = new Intent(MainActivity.this, NoteEditorActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("key1", "");
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
+
     }
 }

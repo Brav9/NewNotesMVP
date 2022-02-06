@@ -2,14 +2,18 @@ package com.hfad.newnotesmvp;
 
 public interface IContract {
 
-    interface IPresenter {
+    interface IPresenterNote {
 
-        void openNote();
     }
 
-    interface IModel {
+    interface IPresenter {
+
+        void clickedOnButton();
     }
 
     interface IView {
+    }
+
+    interface IViewNote {
     }
 }
