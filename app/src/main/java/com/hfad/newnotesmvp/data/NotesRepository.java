@@ -8,7 +8,6 @@ import com.google.gson.GsonBuilder;
 import com.hfad.newnotesmvp.data.model.Note;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class NotesRepository implements INotesRepository {
@@ -54,6 +53,4 @@ public class NotesRepository implements INotesRepository {
         List<Note> notes = Arrays.asList(notesArray);
         return notes;
     }
-
-
 }

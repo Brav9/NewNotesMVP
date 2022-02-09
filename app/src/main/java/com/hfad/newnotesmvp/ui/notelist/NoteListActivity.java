@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -21,7 +22,9 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
 
 //    static ArrayList<String> notes = new ArrayList<>();
     private ArrayAdapter<Note> arrayAdapter; //TODO поискать, как отображать свою модель
+
     private NoteListContract.INoteListPresenter presenter;
+
     private ListView listView;
     private FloatingActionButton floatingActionButton;
 
@@ -46,6 +49,17 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
     @Override
     public void showNotes(List<Note> notes) {
         //TODO отображение в адаптере и привязка адаптера к listView
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.activity_note_aditor, notes);
+        listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), EditNoteActivity.class);
+                intent.putExtra("noteId", position);
+                startActivity(intent);
+
+            }
+        });
     }
 
     @Override
