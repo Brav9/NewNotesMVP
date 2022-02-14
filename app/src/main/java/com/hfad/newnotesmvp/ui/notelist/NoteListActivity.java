@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,13 +21,14 @@ import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity implements NoteListContract.INoteListView {
 
-//    static ArrayList<String> notes = new ArrayList<>();
+    //    static ArrayList<String> notes = new ArrayList<>();
     private ArrayAdapter<Note> arrayAdapter; //TODO поискать, как отображать свою модель
 
     private NoteListContract.INoteListPresenter presenter;
 
     private ListView listView;
     private FloatingActionButton floatingActionButton;
+    private Button btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,8 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
 
         listView = findViewById(R.id.listView);
         floatingActionButton = findViewById(R.id.floatingActionButton);
-
-        presenter = new NoteListPresenter(this);
+        btnSave = findViewById(R.id.btnSave);
+        presenter = new NoteListPresenter(this, getApplicationContext());
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +59,6 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
                 Intent intent = new Intent(getApplicationContext(), EditNoteActivity.class);
                 intent.putExtra("noteId", position);
                 startActivity(intent);
-
             }
         });
     }
@@ -66,6 +67,8 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
     public void openCreateNoteScreen() {
         Intent intent = new Intent(getApplicationContext(), EditNoteActivity.class);
         startActivity(intent);
+
+
     }
 
     @Override

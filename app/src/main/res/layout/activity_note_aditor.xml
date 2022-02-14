@@ -9,11 +9,18 @@
     <EditText
         android:id="@+id/etTextMultiLine"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="3dp" />
+        tools:layout_editor_absoluteX="6dp" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        app:layout_constraintBottom_toBottomOf="@+id/etTextMultiLine" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,9 @@
 package com.hfad.newnotesmvp.ui.notelist;
 
-
-import android.provider.ContactsContract;
+import android.content.Context;
 
 import com.hfad.newnotesmvp.data.INotesRepository;
+
 import com.hfad.newnotesmvp.data.NotesRepository;
 import com.hfad.newnotesmvp.data.model.Note;
 
@@ -12,38 +12,23 @@ import java.util.List;
 public class NoteListPresenter implements NoteListContract.INoteListPresenter {
 
     NoteListContract.INoteListView view;
-//    INotesRepository ....
+    //    INotesRepository ....
     INotesRepository repository;
 
-    public NoteListPresenter(NoteListContract.INoteListView view) {
+    public NoteListPresenter(NoteListContract.INoteListView view, Context applicationContext) {
         this.view = view;
-        loadNotes();
+//        loadNotes();
 //        repo = new Repo
-
-     repository = new INotesRepository() {
-         @Override
-         public void saveNote(Note note) {
-
-         }
-
-         @Override
-         public void deleteNote(Note note) {
-
-         }
-
-         @Override
-         public List<Note> getNotes() {
-             return null;
-         }
-     };
+        repository = new NotesRepository(applicationContext);
 
     }
 
     public void loadNotes() {
         //TODO сходить в репозиторий, получить все заметки и передать на вью
-        //view.showNotes();
-        view.showNotes(repository.getNotes());
-
+        List<Note> notes = repository.getNotes();
+        view.showNotes(notes);
+//        repository.getNotes();
+//        view.showNotes();
     }
 
     @Override

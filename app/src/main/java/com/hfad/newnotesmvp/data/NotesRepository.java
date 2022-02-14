@@ -48,9 +48,13 @@ public class NotesRepository implements INotesRepository {
 
     @Override
     public List<Note> getNotes() {
-        String notesJson = prefs.getString(NOTES, "[]");
-        Note[] notesArray = gson.fromJson(notesJson, Note[].class);
-        List<Note> notes = Arrays.asList(notesArray);
-        return notes;
+        try {
+            String notesJson = prefs.getString(NOTES, "[]");
+            Note[] notesArray = gson.fromJson(notesJson, Note[].class);
+            List<Note> notes = Arrays.asList(notesArray);
+            return notes;
+        }catch (NullPointerException ignored) {
+
+        } return null;
     }
 }
