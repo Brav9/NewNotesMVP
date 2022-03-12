@@ -4,6 +4,9 @@ import android.content.Context;
 
 import com.hfad.newnotesmvp.data.INotesRepository;
 import com.hfad.newnotesmvp.data.NotesRepository;
+import com.hfad.newnotesmvp.data.model.Note;
+
+import java.util.UUID;
 
 public class EditNotePresenter implements EditNoteContract.IEditNotePresenter {
 
@@ -17,19 +20,11 @@ public class EditNotePresenter implements EditNoteContract.IEditNotePresenter {
 
     @Override
     public void updateNote(String note) {
-        try {
-            if (note != null) {
-
-            } else {
-
-            }
-        } catch (NullPointerException | NumberFormatException ignored) {
-
-        }
     }
 
     @Override
-    public void closeNoteClick() {
-
+    public void saveNote(String note) {
+        repository.saveNote(new Note(UUID.randomUUID().toString(), note));
+        view.closeEditNoteScreen();
     }
 }

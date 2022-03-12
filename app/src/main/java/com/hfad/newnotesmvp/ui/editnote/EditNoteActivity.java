@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-
 import com.hfad.newnotesmvp.R;
 
 public class EditNoteActivity extends AppCompatActivity implements EditNoteContract.IEditNoteView {
 
     EditNoteContract.IEditNotePresenter presenter;
+    private Button btnSave;
+    private EditText etMultiLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,28 +23,36 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
 
         presenter = new EditNotePresenter(this, getApplicationContext());
 
-        EditText editText = (EditText) findViewById(R.id.etTextMultiLine);
+        btnSave = findViewById(R.id.btnSave);
+        etMultiLine = (EditText) findViewById(R.id.etTextMultiLine);
 
-        editText.addTextChangedListener(new TextWatcher() {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                presenter.updateNote(editText.getText().toString());
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public void onClick(View v) {
+                presenter.saveNote(etMultiLine.getText().toString());
             }
         });
+//        etMultiLine.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                presenter.updateNote(etMultiLine.getText().toString());
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 //        Bundle bundle = getIntent().getExtras();
 //        String tittle = bundle.getString("key1", "");
     }
+
 
     @Override
     public void updateNote() {
@@ -50,6 +61,6 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
 
     @Override
     public void closeEditNoteScreen() {
-
+        finish();
     }
 }

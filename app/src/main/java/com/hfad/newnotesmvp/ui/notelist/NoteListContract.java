@@ -9,6 +9,7 @@ public interface NoteListContract {
     interface INoteListPresenter {
         void clickedOnButton();
         void openNoteClick(int id);
+        void loadNotes();
     }
 
     interface INoteListView {

@@ -2,20 +2,20 @@ package com.hfad.newnotesmvp.data.model;
 
 public class Note {
 
-    int id;
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    String uuid;
     String value;
 
-    public Note(int id, String value) {
-        this.id = id;
+    public Note(String uuid, String value) {
+        this.uuid = uuid;
         this.value = value;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getValue() {
