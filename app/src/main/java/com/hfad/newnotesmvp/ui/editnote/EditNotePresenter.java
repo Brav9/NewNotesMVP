@@ -10,6 +10,8 @@ import java.util.UUID;
 
 public class EditNotePresenter implements EditNoteContract.IEditNotePresenter {
 
+    Note note;
+
     public EditNotePresenter(EditNoteContract.IEditNoteView view, Context applicationContext) {
         this.view = view;
         repository = new NotesRepository(applicationContext);
@@ -19,12 +21,22 @@ public class EditNotePresenter implements EditNoteContract.IEditNotePresenter {
     INotesRepository repository;
 
     @Override
-    public void updateNote(String note) {
+    public void saveNote(String text) {
+        if (note != null) {
+            note.setValue(text);
+            repository.saveNote(note);
+        } else {
+            repository.saveNote(new Note(UUID.randomUUID().toString(), text));
+        }
+        view.closeEditNoteScreen();
     }
 
     @Override
-    public void saveNote(String note) {
-        repository.saveNote(new Note(UUID.randomUUID().toString(), note));
-        view.closeEditNoteScreen();
+    public void loadNote(String uuid) {
+        Note note = repository.getNote(uuid);
+        if (note != null) {
+            this.note = note;
+            view.showNote(note);
+        }
     }
 }

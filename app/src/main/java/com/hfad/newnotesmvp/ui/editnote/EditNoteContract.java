@@ -6,10 +6,9 @@ public interface EditNoteContract {
 
     interface IEditNotePresenter {
 
-        void updateNote(String note);
-
         void saveNote(String note);
 
+        void loadNote(String uuid);
     }
 
     interface IEditNoteView {
@@ -17,5 +16,7 @@ public interface EditNoteContract {
         void updateNote();
 
         void closeEditNoteScreen();
+
+        void showNote(Note note);
     }
 }

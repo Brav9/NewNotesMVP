@@ -13,15 +13,22 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     TextView tvNoteText;
     TextView tvUuid;
+    Note currentNote;
 
-    public NoteViewHolder(@NonNull View itemView) {
+    public NoteViewHolder(@NonNull View itemView, OnNoteClickListener clickListener) {
         super(itemView);
-
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onNoteClick(currentNote);
+            }
+        });
         tvNoteText = itemView.findViewById(R.id.tvNoteText);
         tvUuid = itemView.findViewById(R.id.tvUuid);
     }
 
     public void bind(Note note) {
+        currentNote = note;
         tvNoteText.setText(note.getValue());
         tvUuid.setText(note.getUuid());
     }

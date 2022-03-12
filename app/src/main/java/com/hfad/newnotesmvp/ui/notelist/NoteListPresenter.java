@@ -37,7 +37,7 @@ public class NoteListPresenter implements NoteListContract.INoteListPresenter {
     }
 
     @Override
-    public void openNoteClick(int id) {
-        view.openEditNoteScreen(id);
+    public void openNoteClick(Note note) {
+        view.openEditNoteScreen(note.getUuid());
     }
 }

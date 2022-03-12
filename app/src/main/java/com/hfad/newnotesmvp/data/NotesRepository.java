@@ -3,6 +3,8 @@ package com.hfad.newnotesmvp.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.Nullable;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hfad.newnotesmvp.data.model.Note;
@@ -73,5 +75,15 @@ public class NotesRepository implements INotesRepository {
         Note[] notesArray = gson.fromJson(notesJson, Note[].class);
         List<Note> notes = Arrays.asList(notesArray);
         return notes;
+    }
+
+    @Override
+    @Nullable
+    public Note getNote(String uuid) {
+        List<Note> notes = getNotes();
+        for (Note noteIterate : notes) {
+            if (noteIterate.getUuid().equals(uuid)) return noteIterate;
+        }
+        return null;
     }
 }

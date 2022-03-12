@@ -12,4 +12,5 @@ public interface INotesRepository {
 
     List<Note> getNotes();
 
+    Note getNote(String uuid);
 }

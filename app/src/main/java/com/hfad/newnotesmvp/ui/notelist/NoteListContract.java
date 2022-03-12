@@ -8,14 +8,14 @@ public interface NoteListContract {
 
     interface INoteListPresenter {
         void clickedOnButton();
-        void openNoteClick(int id);
+        void openNoteClick(Note note);
         void loadNotes();
     }
 
     interface INoteListView {
         void showNotes(List<Note> notes);
         void openCreateNoteScreen();
-        void openEditNoteScreen(int id);
+        void openEditNoteScreen(String uuid);
     }
 
 }

@@ -19,7 +19,12 @@ import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity implements NoteListContract.INoteListView {
 
-    private NotesAdapter adapter = new NotesAdapter();
+    private NotesAdapter adapter = new NotesAdapter(new OnNoteClickListener() {
+        @Override
+        public void onNoteClick(Note note) {
+            presenter.openNoteClick(note);
+        }
+    });
     private NoteListContract.INoteListPresenter presenter;
 
     private RecyclerView rvNotes;
@@ -68,10 +73,10 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
     }
 
     @Override
-    public void openEditNoteScreen(int id) {
+    public void openEditNoteScreen(String uuid) {
         Intent intent = new Intent(getApplicationContext(), EditNoteActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("KEY_NOTE_ID", id);
+        bundle.putString("KEY_NOTE_ID", uuid);
         intent.putExtras(bundle);
         startActivity(intent);
     }

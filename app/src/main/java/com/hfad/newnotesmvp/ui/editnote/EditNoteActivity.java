@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.hfad.newnotesmvp.R;
+import com.hfad.newnotesmvp.data.model.Note;
 
 public class EditNoteActivity extends AppCompatActivity implements EditNoteContract.IEditNoteView {
 
@@ -51,6 +52,12 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
 //        });
 //        Bundle bundle = getIntent().getExtras();
 //        String tittle = bundle.getString("key1", "");
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String uuid = bundle.getString("KEY_NOTE_ID", "");
+            presenter.loadNote(uuid);
+        }
     }
 
 
@@ -62,5 +69,10 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
     @Override
     public void closeEditNoteScreen() {
         finish();
+    }
+
+    @Override
+    public void showNote(Note note) {
+        etMultiLine.setText(note.getValue());
     }
 }
