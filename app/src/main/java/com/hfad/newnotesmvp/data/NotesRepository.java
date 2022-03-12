@@ -56,6 +56,14 @@ public class NotesRepository implements INotesRepository {
     @Override
     public void deleteNote(Note note) {
         List<Note> notes = getNotes();
+        List<Note> editedNotes = new ArrayList<>();
+
+        for (Note noteIterate : notes) {
+            if (!noteIterate.getUuid().equals(note.getUuid())) {
+                editedNotes.add(noteIterate);
+            }
+        }
+        saveNotes(editedNotes);
         //TODO найти, как удалить из List один объект
         // скорее всего новая коллекция (ArrayList).
         // Затем notes перебираешь в цикле, каждый объект в листе сравниваешь по id

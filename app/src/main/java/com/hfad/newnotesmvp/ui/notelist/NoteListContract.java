@@ -10,12 +10,18 @@ public interface NoteListContract {
         void clickedOnButton();
         void openNoteClick(Note note);
         void loadNotes();
+
+        void onLongClick(Note note);
+
+        void deleteNote(Note note);
     }
 
     interface INoteListView {
         void showNotes(List<Note> notes);
         void openCreateNoteScreen();
         void openEditNoteScreen(String uuid);
+
+        void showDeleteDialog(Note note);
     }
 
 }

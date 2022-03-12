@@ -32,6 +32,17 @@ public class NoteListPresenter implements NoteListContract.INoteListPresenter {
     }
 
     @Override
+    public void onLongClick(Note note) {
+        view.showDeleteDialog(note);
+    }
+
+    @Override
+    public void deleteNote(Note note) {
+        repository.deleteNote(note);
+        loadNotes();
+    }
+
+    @Override
     public void clickedOnButton() {
         view.openCreateNoteScreen();
     }

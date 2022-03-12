@@ -23,6 +23,14 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
                 clickListener.onNoteClick(currentNote);
             }
         });
+
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                clickListener.onLongNoteClick(currentNote);
+                return true;
+            }
+        });
         tvNoteText = itemView.findViewById(R.id.tvNoteText);
         tvUuid = itemView.findViewById(R.id.tvUuid);
     }

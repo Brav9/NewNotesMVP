@@ -1,11 +1,15 @@
 package com.hfad.newnotesmvp.ui.notelist;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +19,7 @@ import com.hfad.newnotesmvp.R;
 import com.hfad.newnotesmvp.data.model.Note;
 import com.hfad.newnotesmvp.ui.editnote.EditNoteActivity;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity implements NoteListContract.INoteListView {
@@ -23,6 +28,11 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
         @Override
         public void onNoteClick(Note note) {
             presenter.openNoteClick(note);
+        }
+
+        @Override
+        public void onLongNoteClick(Note note) {
+            presenter.onLongClick(note);
         }
     });
     private NoteListContract.INoteListPresenter presenter;
@@ -79,6 +89,23 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
         bundle.putString("KEY_NOTE_ID", uuid);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    @Override
+    public void showDeleteDialog(Note note) {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Are you sure?")
+                .setMessage("Do you want to delete this note?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        presenter.deleteNote(note);
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
     @Override
