@@ -3,17 +3,17 @@ package com.hfad.newnotesmvp.ui.editnote;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.hfad.newnotesmvp.R;
 import com.hfad.newnotesmvp.data.model.Note;
 
 public class EditNoteActivity extends AppCompatActivity implements EditNoteContract.IEditNoteView {
 
     EditNoteContract.IEditNotePresenter presenter;
+
     private Button btnSave;
     private EditText etMultiLine;
 

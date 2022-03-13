@@ -27,8 +27,8 @@ public class NotesRepository implements INotesRepository {
 
     @Override
     public void saveNote(Note note) {
-        List<Note> notes = getNotes();
 
+        List<Note> notes = getNotes();
         List<Note> editedNotes = new ArrayList<>();
 
         boolean contains = false;
@@ -46,29 +46,24 @@ public class NotesRepository implements INotesRepository {
             editedNotes.add(note);
         }
 
-        //TODO найти, как удалить из List один объект
-        // скорее всего новая коллекция (ArrayList).
-        // Затем notes перебираешь в цикле, каждый объект в листе сравниваешь по id
-        // с тем, который передан в аргументах. Если не совпадают, то добавляшь из массива, иначе - из аргументов
         saveNotes(editedNotes);
     }
 
     @Override
     public void deleteNote(Note note) {
+
         List<Note> notes = getNotes();
         List<Note> editedNotes = new ArrayList<>();
 
         for (Note noteIterate : notes) {
+
             if (!noteIterate.getUuid().equals(note.getUuid())) {
                 editedNotes.add(noteIterate);
             }
         }
+
         saveNotes(editedNotes);
-        //TODO найти, как удалить из List один объект
-        // скорее всего новая коллекция (ArrayList).
-        // Затем notes перебираешь в цикле, каждый объект в листе сравниваешь по id
-        // с тем, который передан в аргументах. Если не совпадают, то добавляшь заметку в новый лист
-//        saveNotes();
+
     }
 
     private void saveNotes(List<Note> notes) {
@@ -88,6 +83,7 @@ public class NotesRepository implements INotesRepository {
     @Override
     @Nullable
     public Note getNote(String uuid) {
+
         List<Note> notes = getNotes();
         for (Note noteIterate : notes) {
             if (noteIterate.getUuid().equals(uuid)) return noteIterate;
