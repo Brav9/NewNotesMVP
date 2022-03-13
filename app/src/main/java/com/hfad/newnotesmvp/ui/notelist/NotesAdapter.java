@@ -1,23 +1,19 @@
 package com.hfad.newnotesmvp.ui.notelist;
 
 import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.hfad.newnotesmvp.R;
 import com.hfad.newnotesmvp.data.model.Note;
-
 import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
     private List<Note> notes;
-    private OnNoteClickListener clickListener;
+    private final OnNoteClickListener clickListener;
 
     public NotesAdapter(OnNoteClickListener clickListener) {
         this.clickListener = clickListener;
