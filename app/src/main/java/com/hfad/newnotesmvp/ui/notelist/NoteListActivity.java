@@ -1,30 +1,25 @@
 package com.hfad.newnotesmvp.ui.notelist;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hfad.newnotesmvp.R;
 import com.hfad.newnotesmvp.data.model.Note;
 import com.hfad.newnotesmvp.ui.editnote.EditNoteActivity;
-
-import java.util.HashSet;
 import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity implements NoteListContract.INoteListView {
 
-    private NotesAdapter adapter = new NotesAdapter(new OnNoteClickListener() {
+    private RecyclerView rvNotes;
+    private FloatingActionButton floatingActionButton;
+
+    private final NotesAdapter adapter = new NotesAdapter(new OnNoteClickListener() {
         @Override
         public void onNoteClick(Note note) {
             presenter.openNoteClick(note);
@@ -35,11 +30,8 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
             presenter.onLongClick(note);
         }
     });
+
     private NoteListContract.INoteListPresenter presenter;
-
-    private RecyclerView rvNotes;
-    private FloatingActionButton floatingActionButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
