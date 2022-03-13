@@ -2,13 +2,10 @@ package com.hfad.newnotesmvp.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import androidx.annotation.Nullable;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hfad.newnotesmvp.data.model.Note;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,11 +38,9 @@ public class NotesRepository implements INotesRepository {
                 editedNotes.add(noteIterate);
             }
         }
-
         if (!contains) {
             editedNotes.add(note);
         }
-
         saveNotes(editedNotes);
     }
 
@@ -56,14 +51,11 @@ public class NotesRepository implements INotesRepository {
         List<Note> editedNotes = new ArrayList<>();
 
         for (Note noteIterate : notes) {
-
             if (!noteIterate.getUuid().equals(note.getUuid())) {
                 editedNotes.add(noteIterate);
             }
         }
-
         saveNotes(editedNotes);
-
     }
 
     private void saveNotes(List<Note> notes) {
