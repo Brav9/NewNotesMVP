@@ -25,7 +25,7 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
         presenter = new EditNotePresenter(this, getApplicationContext());
 
         btnSave = findViewById(R.id.btnSave);
-        etMultiLine = (EditText) findViewById(R.id.etTextMultiLine);
+        etMultiLine = findViewById(R.id.etTextMultiLine);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,37 +33,12 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
                 presenter.saveNote(etMultiLine.getText().toString());
             }
         });
-//        etMultiLine.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//                presenter.updateNote(etMultiLine.getText().toString());
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
-//        Bundle bundle = getIntent().getExtras();
-//        String tittle = bundle.getString("key1", "");
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             String uuid = bundle.getString("KEY_NOTE_ID", "");
             presenter.loadNote(uuid);
         }
-    }
-
-
-    @Override
-    public void updateNote() {
-
     }
 
     @Override

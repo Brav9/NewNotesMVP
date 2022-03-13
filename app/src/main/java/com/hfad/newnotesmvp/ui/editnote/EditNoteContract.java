@@ -13,8 +13,6 @@ public interface EditNoteContract {
 
     interface IEditNoteView {
 
-        void updateNote();
-
         void closeEditNoteScreen();
 
         void showNote(Note note);
