@@ -13,7 +13,7 @@ import java.util.List;
 public class NotesAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
     private List<Note> notes;
-   OnNoteClickListener clickListener;
+   final OnNoteClickListener clickListener;
 
     public NotesAdapter(OnNoteClickListener clickListener) {
         this.clickListener = clickListener;

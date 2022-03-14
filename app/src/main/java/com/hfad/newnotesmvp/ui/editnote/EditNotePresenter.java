@@ -17,8 +17,8 @@ public class EditNotePresenter implements EditNoteContract.IEditNotePresenter {
         repository = new NotesRepository(applicationContext);
     }
 
-    EditNoteContract.IEditNoteView view;
-    INotesRepository repository;
+    final EditNoteContract.IEditNoteView view;
+    final INotesRepository repository;
 
     @Override
     public void saveNote(String text) {

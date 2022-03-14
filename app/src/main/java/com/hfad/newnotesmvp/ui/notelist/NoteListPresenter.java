@@ -8,8 +8,8 @@ import java.util.List;
 
 public class NoteListPresenter implements NoteListContract.INoteListPresenter {
 
-    NoteListContract.INoteListView view;
-    INotesRepository repository;
+    final NoteListContract.INoteListView view;
+    final INotesRepository repository;
 
     public NoteListPresenter(NoteListContract.INoteListView view, Context applicationContext) {
         this.view = view;

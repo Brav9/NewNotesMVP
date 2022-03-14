@@ -42,12 +42,7 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
         rvNotes = findViewById(R.id.rvNotes);
         floatingActionButton = findViewById(R.id.floatingActionButton);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.clickedOnButton();
-            }
-        });
+        floatingActionButton.setOnClickListener(v -> presenter.clickedOnButton());
 
         rvNotes.setLayoutManager(new LinearLayoutManager(this));
         rvNotes.setAdapter(adapter);
@@ -81,12 +76,7 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Are you sure?")
                 .setMessage("Do you want to delete this note?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        presenter.deleteNote(note);
-                    }
-                })
+                .setPositiveButton("Yes", (dialogInterface, i) -> presenter.deleteNote(note))
                 .setNegativeButton("No", null)
                 .show();
     }

@@ -13,8 +13,8 @@ import java.util.List;
 public class NotesRepository implements INotesRepository {
 
     private final String NOTES = "notes";
-    private SharedPreferences prefs;
-    private Gson gson;
+    private final SharedPreferences prefs;
+    private final Gson gson;
 
     public NotesRepository(Context context) {
         prefs = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
@@ -68,8 +68,7 @@ public class NotesRepository implements INotesRepository {
     public List<Note> getNotes() {
         String notesJson = prefs.getString(NOTES, "[]");
         Note[] notesArray = gson.fromJson(notesJson, Note[].class);
-        List<Note> notes = Arrays.asList(notesArray);
-        return notes;
+        return Arrays.asList(notesArray);
     }
 
     @Override

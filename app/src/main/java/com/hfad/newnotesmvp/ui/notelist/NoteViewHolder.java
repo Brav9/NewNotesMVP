@@ -9,34 +9,22 @@ import com.hfad.newnotesmvp.data.model.Note;
 
 public class NoteViewHolder extends RecyclerView.ViewHolder {
 
-    TextView tvNoteText;
-    TextView tvUuid;
+    final TextView tvNoteText;
     Note currentNote;
 
     public NoteViewHolder(@NonNull View itemView, OnNoteClickListener clickListener) {
         super(itemView);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickListener.onNoteClick(currentNote);
-            }
-        });
+        itemView.setOnClickListener(v -> clickListener.onNoteClick(currentNote));
 
-        itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                clickListener.onLongNoteClick(currentNote);
-                return true;
-            }
+        itemView.setOnLongClickListener(v -> {
+            clickListener.onLongNoteClick(currentNote);
+            return true;
         });
-
         tvNoteText = itemView.findViewById(R.id.tvNoteText);
-//        tvUuid = itemView.findViewById(R.id.tvUuid);
     }
 
     public void bind(Note note) {
         currentNote = note;
         tvNoteText.setText(note.getValue());
-//        tvUuid.setText(note.getUuid());
     }
 }

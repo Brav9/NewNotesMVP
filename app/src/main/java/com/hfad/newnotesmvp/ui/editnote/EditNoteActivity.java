@@ -27,12 +27,7 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
         btnSave = findViewById(R.id.btnSave);
         etMultiLine = findViewById(R.id.etTextMultiLine);
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.saveNote(etMultiLine.getText().toString());
-            }
-        });
+        btnSave.setOnClickListener(v -> presenter.saveNote(etMultiLine.getText().toString()));
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
