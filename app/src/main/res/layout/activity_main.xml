@@ -13,6 +13,7 @@
         android:layout_marginEnd="18dp"
         android:layout_marginBottom="18dp"
         android:clickable="true"
+        android:backgroundTint="@color/blue_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit"

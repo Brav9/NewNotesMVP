@@ -31,12 +31,12 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
         });
 
         tvNoteText = itemView.findViewById(R.id.tvNoteText);
-        tvUuid = itemView.findViewById(R.id.tvUuid);
+//        tvUuid = itemView.findViewById(R.id.tvUuid);
     }
 
     public void bind(Note note) {
         currentNote = note;
         tvNoteText.setText(note.getValue());
-        tvUuid.setText(note.getUuid());
+//        tvUuid.setText(note.getUuid());
     }
 }

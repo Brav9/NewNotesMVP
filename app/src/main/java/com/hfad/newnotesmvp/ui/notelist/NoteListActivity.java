@@ -18,7 +18,7 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
 
     private RecyclerView rvNotes;
     private FloatingActionButton floatingActionButton;
-    private String KEY_NOTE_ID;
+
 
     private final NotesAdapter adapter = new NotesAdapter(new OnNoteClickListener() {
         @Override
@@ -70,7 +70,7 @@ public class NoteListActivity extends AppCompatActivity implements NoteListContr
     public void openEditNoteScreen(String uuid) {
         Intent intent = new Intent(getApplicationContext(), EditNoteActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString(KEY_NOTE_ID, uuid);
+        bundle.putString("KEY_NOTE_ID" , uuid);
         intent.putExtras(bundle);
         startActivity(intent);
     }
