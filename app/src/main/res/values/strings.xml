@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NewNotes MVP</string>
+    <string name="text_button">Сохранить</string>
+    <string name="todo">TODO</string>
 </resources>
